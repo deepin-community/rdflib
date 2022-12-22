@@ -1,0 +1,7 @@
+Document: python-rdflib-doc
+Title: rdflib documentation
+Section: Programming/Python
+
+Format: HTML
+Index: /usr/share/doc/python-rdflib-doc/html/index.html
+Files: /usr/share/doc/python-rdflib-doc/html/_modules/ /usr/share/doc/python-rdflib-doc/html/apidocs/*.html

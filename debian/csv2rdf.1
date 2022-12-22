@@ -1,0 +1,53 @@
+.TH CSV2RDF "1" "December 2013" "csv2rdf" "User Commands"
+.SH NAME
+csv2rdf \- converts CSV to RDF
+.SH SYNOPSIS
+csv2rdf \fB\-b\fR <instance\-base> \fB\-p\fR <property\-base> [\-c <classname>] [\-i <identity column(s)>] [\-l <label columns>] [\-s <N>] [\-o <output>] [\-f configfile] [\-\-col<N> <colspec>] [\-\-prop<N> <property>] <[\-d <delim>] [\-C] [files...]
+.SH DESCRIPTION
+Reads csv files from stdin or given files
+.TP
+if \fB\-d\fR is given, use this delimiter
+.TP
+if \fB\-s\fR is given, skips N lines at the start
+.TP
+Creates a URI from the columns given to \fB\-i\fR, or automatically by numbering if none is given
+.TP
+Outputs RDFS labels from the columns given to \fB\-l\fR
+.TP
+if \fB\-c\fR is given adds a type triple with the given classname
+.TP
+if \fB\-C\fR is given, the class is defined as rdfs:Class
+.TP
+Outputs one RDF triple per column in each row.
+.TP
+Output is in n3 format.
+.TP
+Output is stdout, unless \fB\-o\fR is specified
+.PP
+Long options also supported: \fB\-\-base\fR, \fB\-\-propbase\fR, \fB\-\-ident\fR, \fB\-\-class\fR, \fB\-\-label\fR, \fB\-\-out\fR, \fB\-\-defineclass\fR
+.PP
+Long options \fB\-\-col0\fR, \fB\-\-col1\fR, ... can be used to specify conversion for columns.
+.TP
+Conversions can be:
+.IP
+float(), int(), split(sep, [more]), uri(base, [class]), date(format)
+.PP
+Long options \fB\-\-prop0\fR, \fB\-\-prop1\fR, ... can be used to use specific properties, rather than ones auto\-generated from the headers
+.PP
+\fB\-f\fR says to read config from a .ini/config file \- the file must contain one
+section called csv2rdf, with keys like the long options, i.e.:
+.TP
+.B
+
+    [csv2rdf]
+    out=output.n3
+    base=http://example.org/
+    col0=split(";")
+    col1=split(";", uri("http://example.org/things/",
+                        "http://xmlns.com/foaf/0.1/Person"))
+    col2=float()
+    col3=int()
+    col4=date("%Y\-%b\-%d %H:%M:%S")
+
+.SH AUTHOR
+This manual page was written by Olivier Berger <obergix@debian.org>, for the Debian distribution.

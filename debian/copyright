@@ -1,0 +1,330 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: RDFLib
+Upstream-Contact: Daniel 'eikeon' Krech <eikeon@eikeon.com>
+Source: https://github.com/RDFLib/rdflib
+
+Files: *
+Copyright: (c) 2002-2016, RDFLib Team
+License: BSD-3-clause
+ Copyright (c) 2002-2012, RDFLib Team
+ See CONTRIBUTORS and http://github.com/RDFLib/rdflib
+ All rights reserved.
+ . 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+ .
+   * Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ .
+   * Redistributions in binary form must reproduce the above
+ copyright notice, this list of conditions and the following
+ disclaimer in the documentation and/or other materials provided
+ with the distribution.
+ .
+   * Neither the name of Daniel Krech nor the names of its
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Files: rdflib/plugins/parsers/pyRdfa/*
+Copyright: W3C
+License: W3C
+
+Files: rdflib/plugins/parsers/pyRdfa/extras/httpheader.py
+Copyright: (c) 2005 Deron E. Meranda <http://deron.meranda.us/>
+License: LGPL-2.1+
+ This library is free software; you can redistribute it and/or modify
+ it under the terms of the GNU Lesser General Public License as
+ published by the Free Software Foundation; either version 2.1 of the
+ License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ 02110-1301 USA
+ .
+ On Debian systems, the full text of the GNU Lesser General Public
+ License version 2.1 can be found in the file
+ `/usr/share/common-licenses/LGPL-2.1'.
+
+Files: rdflib/plugins/parsers/pyMicrodata/*
+Copyright: W3C
+License: W3C
+
+Files: rdflib/plugins/parsers/ntriples.py
+Copyright: 2004, Sean B. Palmer, inamidst.com
+License: W3C
+Comment: The actual license statement ist 'GPL-2 or W3C or BSD or MIT'; GPL-2
+ and BSD are ambiguous (is GPL-2 "or later"? How-many-clause BSD? Which version
+ of the MIT license?) and thus left out of the machine readable part. The W3C
+ license is assumed to be the one used in other files in the same project.
+
+Files: rdflib/plugins/parsers/structureddata.py
+Copyright: W3C
+License: W3C
+
+Files: rdflib/plugins/parsers/notation3.py
+Copyright: 2000-2007, World Wide Web Consortium.
+	   2001, MIT.
+	   2001, Zolera Systems Inc.
+	   2007, Sean B. Palmer. 
+	   2010, Gunnar A. Grimnes
+License: W3C
+
+Files: rdflib/plugins/parsers/hturtle.py
+Copyright: W3C
+License: W3C
+
+Files: docs/_themes/armstrong/*
+Copyright: (c) 2011 Bay Citizen & Texas Tribune
+	   (c) 2010 Charles Leifer, Eric Holscher, Bobby Grace
+License: Expat
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+
+Files: docs/_themes/armstrong/static/rtd.css_t
+       docs/_static/pyramid.css
+Copyright: 2007-2010 by the Sphinx team, Armin Ronacher, Eric Pierce, Eric Holscher
+License: BSD-2-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+ .
+ * Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ .
+ * Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Comment: The wording (or variant) of the BSD license in question was traced
+ back to the original source of the files and the license statement there at
+ https://github.com/sphinx-doc/sphinx/blob/master/LICENSE .
+
+Files: test/w3c/turtle/*
+Copyright: W3C
+License: W3C-Test-Suite or W3C-3-clause-BSD
+Comment: The wording in test/w3c/turtle/LICENSE states "under both [this] and
+ [that license]". This is commonly understood to mean that complying with any
+ is sufficient, which is detailed on
+ https://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright, where it is
+ stated that "The choice of license is up to the licensee for every single use
+ of tests from a W3C Test Suite."
+
+License: W3C-Test-Suite
+ W3C Test Suite License
+ ======================
+ .
+ This document, Test Suites and other documents that link to this statement are
+ provided by the copyright holders under the following license: By using and/or
+ copying this document, or the W3C document from which this statement is linked,
+ you (the licensee) agree that you have read, understood, and will comply with
+ the following terms and conditions:
+ .
+ Permission to copy, and distribute the contents of this document, or the W3C
+ document from which this statement is linked, in any medium for any purpose and
+ without fee or royalty is hereby granted, provided that you include the
+ following on ALL copies of the document, or portions thereof, that you use:
+ .
+ 1 A link or URL to the original W3C document.
+ .
+ 2 The pre-existing copyright notice of the original author, or if it doesn't
+   exist, a notice (hypertext is preferred, but a textual representation is
+   permitted) of the form: "Copyright © [$date-of-document] World Wide Web
+   Consortium, (Massachusetts Institute of Technology, European Research
+   Consortium for Informatics and Mathematics, Keio University) and others. All
+   Rights
+   Reserved. http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright.html"
+ .
+ 3 If it exists, the STATUS of the W3C document.
+ .
+ 4 When space permits, inclusion of the full text of this NOTICE should be
+   provided. We request that authorship attribution be provided in any software,
+   documents, or other items or products that you create pursuant to the
+   implementation of the contents of this document, or any portion thereof.
+ .
+ No right to create modifications or derivatives of W3C documents is granted
+ pursuant to this license. However, if additional requirements (documented in the
+ Copyright FAQ) are satisfied, the right to create modifications or derivatives
+ is sometimes granted by the W3C to individuals complying with those
+ requirements.
+ . 
+ If a Test Suite distinguishes the test harness (or, framework for navigation)
+ and the actual tests, permission is given to remove or alter the harness or
+ navigation if the Test Suite in question allows to do so. The tests themselves
+ shall NOT be changed in any way.
+ .
+ The name and trademarks of W3C and other copyright holders may NOT be used in
+ advertising or publicity pertaining to this document or other documents that
+ link to this statement without specific, written prior permission. Title to
+ copyright in this document will at all times remain with copyright
+ holders. Permission is given to use the trademarked string W3C within claims of
+ performance concerning W3C Specifications or features described therein, and
+ there only, if the test suite so authorizes.
+ .
+ THIS WORK IS PROVIDED BY W3C, MIT, ERCIM, KEIO UNIVERSITY, THE COPYRIGHT HOLDERS
+ AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT
+ NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL W3C, MIT, ERCIM, KEIO
+ UNIVERSITY, THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: W3C-3-clause-BSD
+ W3C 3-clause BSD License
+ ========================
+ .
+ Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+ .
+ 1 Redistributions of works must retain the original copyright notice, this list
+   of conditions and the following disclaimer.
+ .
+ 2 Redistributions in binary form must reproduce the original copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+ .
+ 3 Neither the name of the W3C nor the names of its contributors may be used to
+   endorse or promote products derived from this work without specific prior
+   written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Files: test/w3c/trig/*
+Copyright: W3C
+License: W3C-Test-Suite and W3C-3-clause-BSD
+
+Files: debian/*
+Copyright: 2006-2009 Nacho Barrientos Arias <nacho@debian.org>
+           2013-2016 Christian M. Amsüss <chrysn@fsfe.org>
+           2013-2014 Olivier Berger <obergix@debian.org
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ .
+ On Debian systems, the full text of the GNU General Public License
+ version 2 can be found in the file `/usr/share/common-licenses/GPL-2'.
+
+License: W3C
+ W3C SOFTWARE NOTICE AND LICENSE
+ .
+ This work (and included software, documentation such as READMEs, or
+ other related items) is being provided by the copyright holders under
+ the following license.
+ .
+ License
+ .
+ By obtaining, using and/or copying this work, you (the licensee)
+ agree that you have read, understood, and will comply with the
+ following terms and conditions.
+ .
+ Permission to copy, modify, and distribute this software and its
+ documentation, with or without modification, for any purpose and
+ without fee or royalty is hereby granted, provided that you include
+ the following on ALL copies of the software and documentation or
+ portions thereof, including modifications:
+ .
+   * The full text of this NOTICE in a location viewable to users of
+     the redistributed or derivative work.
+   * Any pre-existing intellectual property disclaimers, notices, or
+     terms and conditions. If none exist, the W3C Software Short
+     Notice
+     (http://www.w3.org/Consortium/Legal/2002/copyright-software-short-notice-20021231.html)
+     should be included (hypertext is preferred, text is permitted)
+     within the body of any redistributed or derivative code.
+   * Notice of any changes or modifications to the files, including
+     the date changes were made. (We recommend you provide URIs to the
+     location from which the code is derived.)
+ .
+ Disclaimers
+ .
+ THIS SOFTWARE AND DOCUMENTATION IS PROVIDED "AS IS," AND COPYRIGHT
+ HOLDERS MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED,
+ INCLUDING BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY OR
+ FITNESS FOR ANY PARTICULAR PURPOSE OR THAT THE USE OF THE SOFTWARE OR
+ DOCUMENTATION WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS,
+ TRADEMARKS OR OTHER RIGHTS.
+ .
+ COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT,
+ SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE
+ SOFTWARE OR DOCUMENTATION.
+ .
+ The name and trademarks of copyright holders may NOT be used in
+ advertising or publicity pertaining to the software without specific,
+ written prior permission. Title to copyright in this software and any
+ associated documentation will at all times remain with copyright
+ holders.
+ .
+ Notes
+ .
+ This version: http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231

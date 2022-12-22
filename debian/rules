@@ -1,0 +1,57 @@
+#! /usr/bin/make -f
+
+# export DH_VERBOSE=1
+# export DH_OPTIONS=-v
+# export PYBUILD_VERBOSE=1
+# set verbosity of nose tests if needed, by uncommenting the following
+#TESTS_VERBOSITY=--verbosity=2
+
+# uncomment to deactivate tests to make package generation quicker
+#export PYBUILD_DISABLE_python2=test
+
+export PYBUILD_NAME=rdflib
+
+# Install (only) those into the -tools package
+export PYBUILD_AFTER_INSTALL_python3=rm -rf 'debian/python-rdflib-tools/usr/bin'; mv '{destdir}/usr/bin' 'debian/python-rdflib-tools/usr/'
+
+# upstream requires more recent sphinx now, which we have in stock Debian.
+# Dynamically enable nodoc profile if sphinx is too old to simplify backports
+SPHINX_VER = $(shell dpkg --compare-versions `dpkg -l python3-sphinx | awk '/^ii/{print $$3;}'` ge 2.4 && echo new || echo old )
+ifeq "$(SPHINX_VER)" "old"
+    export DEB_BUILD_PROFILES += nodoc
+endif
+
+%:
+ifneq "$(shell dh_listpackages | grep -- -doc)" ""
+	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
+else
+	dh $@ --with python3 --buildsystem=pybuild
+endif
+
+override_dh_auto_build:
+ifneq "$(shell dh_listpackages | grep -- -doc)" ""
+	python3 setup.py build_sphinx
+endif
+
+override_dh_sphinxdoc:
+ifneq "$(shell dh_listpackages | grep -- -doc)" ""
+	dh_sphinxdoc
+endif
+#override_dh_sphinxdoc:
+#(test -d $(CURDIR)/debian/python-rdflib-doc && dh_sphinxdoc) || /bin/true
+
+# Make sure pybuild doesn't prevent running tests that require network connections (test_conneg) by setting proxy env vars
+# Skips the test_finalnewline as that fails with JSON-LD.
+# Skips the test_roundtrip test (should skip its test_cases(('nt', 'json-ld',
+#   'test/nt/keywords-04.nt'),), but don't know how to state that) as that fails
+#   with JSON-LD.
+override_dh_auto_test:
+	PYBUILD_SYSTEM=custom \
+	PYBUILD_TEST_ARGS="python3 ./run_tests.py ${TESTS_VERBOSITY} --exclude=test_sparql_service --exclude=test_conneg --exclude=test_finalnewline --exclude=test_roundtrip --verbose" \
+	dh_auto_test --buildsystem=pybuild
+
+override_dh_installexamples:
+	dh_installexamples -X.pyc
+
+override_dh_python3:
+	dh_python3 --recommends-section=sparql --recommends-section=html

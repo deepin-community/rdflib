@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# TESTS_VERBOSITY=--verbosity=2
+
+# verbosity set to 0 so that there's nothing on stderr and sadt is happy
+#TESTS_VERBOSITY=--verbosity=0
+#python2 ./run_tests.py $TESTS_VERBOSITY --with-doctest
+python3 ./run_tests.py --exclude=test_sparql_service --exclude=test_conneg --exclude=test_xmlliterals

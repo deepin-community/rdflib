@@ -1,0 +1,33 @@
+Description: Disable nose doctest as requires network access
+Author: Olivier Berger <obergix@debian.org>
+
+--- a/run_tests.py
++++ b/run_tests.py
+@@ -42,9 +42,10 @@ from __future__ import print_function
+ 
+ 
+ NOSE_ARGS = [
+-    '--with-doctest',
+-    '--doctest-extension=.doctest',
+-    '--doctest-tests',
++# Disabling doctest as some require network access, which isn't available during Debian package build
++#    '--with-doctest',
++#    '--doctest-extension=.doctest',
++#    '--doctest-tests',
+     # '--with-EARL',
+ ]
+ 
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -2,7 +2,8 @@
+ 
+ attr=!known_issue,!non_core,!performancetest
+ verbosity=1
+-with-doctest=1
+-with-doctest-ignore-unicode=1
+-doctest-options=+IGNORE_UNICODE
++# Disabling doctest as some require network access, which isn't available during Debian package build
++#with-doctest=1
++#with-doctest-ignore-unicode=1
++#doctest-options=+IGNORE_UNICODE
+ exclude=rdflib.plugins.sparql.paths|rdflib.extras.external_graph_libs

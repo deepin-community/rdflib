@@ -1,0 +1,274 @@
+rdflib (5.0.0-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * debian/tests: Update path for test runner, disable tests that require
+    network access, and fix test dependencies (Closes: #979841)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Wed, 10 Feb 2021 21:06:36 +0100
+
+rdflib (5.0.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Update Maintainer field with new Debian Python Team
+    contact address.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Yaroslav Halchenko ]
+  * Team upload.
+  * New upstream release; Closes: #959205
+  * d/patches:
+    - silentcopy.patch - dropped (original code is gone)
+    - disabledoctest.patch - updated
+  * d/control:
+    - add python3-sphinxcontrib.apidoc to Build-Depends
+    - boosted compat to 10 (dh_clean otherwise is not happy)
+  * d/rules:
+    - adjust custom tests runner specification: use python3, remove
+      exclusion of tests issue for which is now closed, exclude
+      test_sparql_service requiring online access
+    - enable  nodoc  profile if sphinx is too old (before 2.4) to
+      ease no-effort backports
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 11 Dec 2020 17:51:02 -0500
+
+rdflib (4.2.2-5) unstable; urgency=medium
+
+  * Drop python2 support; Closes: #938336
+
+ -- Sandro Tosi <morph@debian.org>  Mon, 16 Mar 2020 02:53:45 -0400
+
+rdflib (4.2.2-4) unstable; urgency=medium
+
+  * Build documentation with python3-sphinx
+
+ -- Sandro Tosi <morph@debian.org>  Sat, 14 Mar 2020 17:03:32 -0400
+
+rdflib (4.2.2-3) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Bump Standards-Version to 4.4.0.
+  * Bump Standards-Version to 4.4.1.
+
+  [ Sandro Tosi ]
+  * debian/control
+    - add python3-lib2to3, needed by setup.py
+    - remove python-rdflib-jsonld from b-d, not available anymore;
+      Closes: #947730
+    - remove python-networkx from b-d, some tests will be skipped but this is
+      the last rdep, so we can remove py2 networkx from Debian
+    - add python3-pkg-resources explicitly to python-rdflib-tools Depends;
+      Closes: #923979
+  * debian/rules
+    - run tests in verbose mode, more helpful to identify what's happening
+    - make sure p-r-tools/usr/bin is removed before copying over the scripts,
+      probably only useful when there are 2+ supported py3k versions, still
+      FTBFS without this change
+
+ -- Sandro Tosi <morph@debian.org>  Wed, 08 Jan 2020 01:11:37 -0500
+
+rdflib (4.2.2-2) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Remove ancient X-Python(3)-Version fields
+  * d/changelog: Remove trailing whitespaces
+
+  [ Christian Amsüss ]
+  * tools:
+    - Use easy_install provided scripts (CVE-2019-7653, closes: #921751)
+    - Use Python 3
+  * d/control:
+    - Update Standards-Version to 4.3.0 (no further changes)
+    - Remove retired Olivier Berger from uploaders (closes: #917913)
+    - Update salsa location
+  * d/patches: Acknowledge that pyparsinglatest.patch is not required any more
+  * Add bsddb3 and rdflib-jsonld to test dependencies
+    - Disable broken tests for rdflib-jsonld at build time
+
+ -- Christian M. Amsüss <chrysn@fsfe.org>  Fri, 15 Feb 2019 15:50:18 +0100
+
+rdflib (4.2.2-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version
+  * Move packaging Git from Alioth to Salsa
+  * Build-Depends: 2to3
+
+ -- Andreas Tille <tille@debian.org>  Sat, 28 Apr 2018 15:39:31 +0200
+
+rdflib (4.2.1-2) unstable; urgency=medium
+
+  * Demote html5lib and SPARQLWrapper from install_requires to tests_require
+    and extras_require (new patch, closes: #845643)
+  * Mostly use the (now correct) python-declared dependencies instead of
+    manual overrides
+  * Break circular dependency loop by adding nocheck and nodoc profile
+  * Make all packages `Architecture: all`
+
+ -- Christian M. Amsüss <chrysn@fsfe.org>  Wed, 07 Dec 2016 08:50:57 +0100
+
+rdflib (4.2.1-1) unstable; urgency=medium
+
+  [ upstream ]
+  * New version. (Closes: #838849, #748111)
+
+  [ Christian M. Amsüss ]
+  * Refresh patches, drop fixed ones.
+  * Update copyright file.
+  * Bump standards-version to 3.9.8
+  * Drop obsolete control lines and workarounds
+  * Update package descriptions
+  * Add README.source file
+  * Enable test suite for Python 3
+  * Register with doc-base
+
+  [ Andreas Tille ]
+  * make sure build/ dir is really cleaned up
+
+ -- Christian M. Amsüss <chrysn@fsfe.org>  Thu, 03 Nov 2016 04:50:23 +0100
+
+rdflib (4.1.2-3) unstable; urgency=low
+
+  * Upload to unstable almost identical to 4.1.2-2.
+  * Cleanup of this changelog, for revisions 3.2.1-1.1 by Sören Brunk
+    <soeren.brunk@gmail.com> and 3.2.1-1.2 by Christian M. Amsüss
+    <chrysn@fsfse.org>, which previously appeared on their own as
+    UNRELEASED, and have now been merged into 4.0.1-1's entry.
+
+ -- Olivier Berger <obergix@debian.org>  Sat, 24 May 2014 22:47:03 +0200
+
+rdflib (4.1.2-2) experimental; urgency=medium
+
+  * Adding nose to the autopkgtest deps
+
+ -- Olivier Berger <obergix@debian.org>  Sun, 18 May 2014 10:24:35 +0200
+
+rdflib (4.1.2-1) experimental; urgency=low
+
+  * New upstream version.
+  * New maintainers, which I forgot to mention (Closes: #702300).
+
+ -- Olivier Berger <obergix@debian.org>  Wed, 14 May 2014 10:35:04 +0200
+
+rdflib (4.0.1-3) unstable; urgency=low
+
+  * Should now be ready for prime time, ready for upload to unstable.
+  * Improve the test suite launch script for Python3 a bit.
+
+ -- Olivier Berger <obergix@debian.org>  Tue, 13 May 2014 11:26:08 +0200
+
+rdflib (4.0.1-2) experimental; urgency=low
+
+  * Prevent passing tests requiring network, at build time (Closes:
+    #739222).
+  * Declare Replaces+Breaks relationship for binary split into -tools
+    (Closes: #738829).
+  * Add dep-8/autopkgtest support to pass full test suite when not at
+    build time.
+
+ -- Olivier Berger <obergix@debian.org>  Mon, 12 May 2014 23:46:18 +0200
+
+rdflib (4.0.1-1) experimental; urgency=low
+
+  [ Olivier Berger ]
+  * New upstream version (Closes: #655039).
+
+  [ Christian M. Amsüss ]
+  * Use debhelper 9 with dh_python2 and dh_python3.
+  * Use the pybuild system
+  * Added build-depends on the runtime dependencies and python{,3}-nose for
+    running tests (Closes: #709671).
+  * Use source format 3.0 (quilt)
+  * Bumping standards version to 3.9.4
+
+  [ Sören Brunk ]
+  * New upstream release.
+  * Build using dh_python2.
+  * removed manpage for rdfpipe since it has moved to rdfextras upstream.
+  * debian/control
+   - Removed build dependency on python-support.
+   + Depends on python-isodate.
+   + Bumping standards version to 3.9.3.
+
+ -- Olivier Berger <obergix@debian.org>  Wed, 29 Jan 2014 16:20:28 +0100
+
+rdflib (2.4.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/rules
+   + Tweaking install targets to avoid problems building the
+     package using Python2.6. Thanks Josselin. (closes: #547854).
+  * debian/control
+   + Update standards-version to 3.8.3 (no changes).
+  * debian/changelog
+   + Add a new copyright holder.
+
+ -- Nacho Barrientos Arias <nacho@debian.org>  Tue, 22 Sep 2009 16:34:04 +0200
+
+rdflib (2.4.0-5) unstable; urgency=low
+
+  * debian/control
+   + Depending on python-pkg-resources instead of python-setuptools
+     at runtime (closes: #468713).
+   + Bumping standards version to 3.7.3.
+   + Moving the Homepage information to the right place.
+
+ -- Nacho Barrientos Arias <nacho@debian.org>  Sun, 02 Mar 2008 11:26:50 +0100
+
+rdflib (2.4.0-4) unstable; urgency=low
+
+  * debian/rules
+   + Fixing a shebang which forces rdflib to depend on python2.5
+     (closes: #428558).
+   + Egg stuff is now handled by python-support, removing the manual
+     renaming.
+  * debian/control
+   + Build-depend on python-support >= 0.6
+
+ -- Nacho Barrientos Arias <nacho@debian.org>  Mon, 25 Jun 2007 23:03:09 +0200
+
+rdflib (2.4.0-3) unstable; urgency=low
+
+  * debian/pyversions
+  - Dropped. Now building against all supported python versions.
+  * debian/control
+  - Build-depending on python-all-dev instead of python2.4-dev.
+  * debian/rules
+  - s/pyversions -r/pyversions -s
+  - Minor cosmetic changes.
+
+ -- Nacho Barrientos Arias <nacho@debian.org>  Sun, 27 May 2007 14:01:07 +0200
+
+rdflib (2.4.0-2) unstable; urgency=medium
+
+  * debian/control
+  - Added missing dependency on python-setuptools.
+  * Urgency medium due to this missing dependency renders
+    rdfpipe unusable.
+
+ -- Nacho Barrientos Arias <nacho@debian.org>  Mon, 09 Apr 2007 23:39:06 +0200
+
+rdflib (2.4.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control
+    - Switching to quilt.
+    - Changing maintainer's email address.
+    - Added python-setuptools to build-deps.
+    - Added information about rdfpipe to package description.
+  * debian/copyright
+    - Extending copyright dates.
+    - Added Chimezie as a member of the RDFLib team.
+  * debian/manpages
+    - Added manpage for rdfpipe(1).
+  * debian/rules
+    - Getting rid of installed (now by default) test files.
+    - Dealing with egg information directory.
+
+ -- Nacho Barrientos Arias <nacho@debian.org>  Fri, 06 Apr 2007 15:22:41 +0200
+
+rdflib (2.3.3-1) unstable; urgency=low
+
+  * Initial release. (Closes: #278255)
+
+ -- Nacho Barrientos Arias <chipi@criptonita.com>  Wed, 13 Dec 2006 00:01:10 +0100

@@ -1,0 +1,17 @@
+.TH RDFS2DOT "1" "December 2013" "rdfs2dot" "User Commands"
+.SH NAME
+rdfs2dot \- A commandline tool for drawing RDFS Class diagrams in Graphviz DOT format
+.SH SYNOPSIS
+rdfs2dot.py [\-f <format>] files...
+.SH DESCRIPTION
+Read RDFS files given on STDOUT, writes a graph of the RDFS schema in
+DOT language to stdout
+.SH OPTIONS
+.TP
+\fB\-f\fR specifies parser to use, if not given,
+.SH EXAMPLES
+You can draw the graph of an RDFS file directly:
+    
+   rdfs2dot my_rdfs_file.rdf | dot -Tpng | display
+.SH AUTHOR
+This manual page was written by Olivier Berger <obergix@debian.org>, for the Debian distribution.

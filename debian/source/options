@@ -1,0 +1,2 @@
+# the build directory contains the 2to3 output and gets generated in setup.py's clean target
+extend-diff-ignore = ^build

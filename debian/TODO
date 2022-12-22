@@ -1,0 +1,29 @@
+* jsonlayer.py may be duplicate of python-sparql-wrapper
+   rdflib/plugins/sparql/results/jsonlayer.py
+* rdflib/plugins/parsers/pyRdfa/ may be packaged separately
+   (https://github.com/RDFLib/pyrdfa3) => apparently not if reading
+   https://github.com/RDFLib/pyrdfa3/blob/master/README.md#warning-deprecated-package correctly.
+* rdflib/plugins/parsers/pyMicrodata/ :
+   https://github.com/RDFLib/pymicrodata 
+   package as a lib on its own ?
+* rdfpipe ?
+   cf. http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=655039#20
+* reverse dependencies :
+   $> apt-cache rdepends python-rdflib
+   python-selenium
+   swaml
+   python-sparqlwrapper
+   python-feedvalidator
+   buxon
+   
+   see: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=655039#35
+* Maybe not ship static files from the armstrong theme in sphinx docs
+   ... ?
+* Make sure why tests don't pass for Python3
+* Maybe provide command-line tools for Python 3 some day. For the
+   moment, KISS with only Python2.
+* Move command-line tools out of librarys section and into a non-library-named
+  package
+* Fix clean target (tricky: python3's setup target does the 2to3 steps in
+  the clean step; this doesn't even sound forbidden by the policy taken
+  literally, but does not work well with git-buildpackage)

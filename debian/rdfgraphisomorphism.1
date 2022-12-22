@@ -1,0 +1,23 @@
+.TH RDFGRAPHISOMORPHISM "1" "December 2013" "rdfgraphisomorphism" "User Commands"
+.SH NAME
+rdfgraphisomorphism: \- A commandline tool for testing if RDF graphs are isomorpic
+.SH SYNOPSIS
+.B rdfgraphisomorphism
+[\fIoptions\fR] \fIfile1 file2 \fR... \fIfileN\fR
+.SH DESCRIPTION
+A commandline tool for testing if RDF graphs are isomorpic, i.e. equal if BNode labels are ignored.
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+show this help message and exit
+.TP
+\fB\-s\fR, \fB\-\-stdin\fR
+Load from STDIN as well
+.TP
+\fB\-\-format\fR=\fIRDF_FORMAT\fR
+The format of the RDF document(s) to compare
+.IP
+One of
+\&'xml','n3','trix', 'nt', or 'rdfa'.  The default is xml
+.SH AUTHOR
+This manual page was written by Olivier Berger <obergix@debian.org>, for the Debian distribution.

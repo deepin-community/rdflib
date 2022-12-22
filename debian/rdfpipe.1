@@ -1,0 +1,55 @@
+.TH RDFPIPE "1" "December 2013" "rdfpipe" "User Commands"
+.SH NAME
+rdfpipe: \- parsing RDF in different formats and serializing the resulting graph to a chosen format
+.SH SYNOPSIS
+.B rdfpipe
+[\fI-h\fR] [\fI-i INPUT_FORMAT\fR] [\fI-o OUTPUT_FORMAT\fR] [\fI--ns=PFX=NS \fR...] [\fI-\fR] [\fIFILE \fR...]
+.SH DESCRIPTION
+A commandline tool for parsing RDF in different formats and serializing the
+resulting graph to a chosen format. Reads file system paths, URLs or from
+stdin if '\-' is given. The result is serialized to stdout.
+.SH OPTIONS
+.TP
+\fB\-\-version\fR
+show program's version number and exit
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+show this help message and exit
+.TP
+\fB\-i\fR INPUT_FORMAT, \fB\-\-input\-format\fR=\fIINPUT_FORMAT\fR
+Format of the input document(s). Available input
+formats are: application/trix, xml, n3, turtle,
+microdata, application/svg+xml, mdata, nquads, rdfa,
+trix, application/xhtml+xml, rdfa1.1,
+application/n\-quads, hturtle, rdfa1.0, text/n3,
+text/html, text/turtle, application/rdf+xml, html,
+application/n\-triples, nt. If no format is given, it
+will be guessed from the file name extension. Keywords
+to parser can be given after format like:
+FORMAT:(+)KW1,\-KW2,KW3=VALUE.
+.TP
+\fB\-o\fR OUTPUT_FORMAT, \fB\-\-output\-format\fR=\fIOUTPUT_FORMAT\fR
+Format of the graph serialization. Available output
+formats are: turtle, n3, text/n3, trig, pretty\-xml,
+nt, application/rdf+xml, application/n\-triples,
+application/n\-quads, nquads, application/trix, xml,
+text/turtle, trix. Default format is: 'n3'. Keywords
+to serializer can be given after format like:
+FORMAT:(+)KW1,\-KW2,KW3=VALUE.
+.TP
+\fB\-\-ns\fR=\fIPREFIX=NAMESPACE\fR
+Register a namespace binding (QName prefix to a base
+URI). This can be used more than once.
+.TP
+\fB\-\-no\-guess\fR
+Don't guess format based on file suffix.
+.TP
+\fB\-\-no\-out\fR
+Don't output the resulting graph (useful for checking
+validity of input).
+.TP
+\fB\-w\fR, \fB\-\-warn\fR
+Output warnings to stderr (by default only critical
+errors).
+.SH AUTHOR
+This manual page was written by Olivier Berger <obergix@debian.org>, for the Debian distribution.

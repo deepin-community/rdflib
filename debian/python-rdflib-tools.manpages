@@ -1,0 +1,5 @@
+debian/csv2rdf.1
+debian/rdfpipe.1
+debian/rdf2dot.1
+debian/rdfs2dot.1
+debian/rdfgraphisomorphism.1

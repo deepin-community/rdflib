@@ -1,0 +1,70 @@
+Source: rdflib
+Section: python
+Priority: optional
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders: Christian M. Amsüss <chrysn@fsfe.org>
+Build-Depends: debhelper (>= 10), python3 (>=3.3.0-2), dh-python (>= 1.20140128),
+    python3-all, python3-setuptools,
+    python3-pkg-resources,
+    python3-lib2to3,
+    dpkg-dev (>= 1.17.14),
+    python3-sphinx <!nodoc>,
+    python3-sphinxcontrib.apidoc <!nodoc>,
+# relevant both for testing and documentation generation (sphinx imports the modules)
+    python3-isodate <!nocheck> <!nodoc>,
+    python3-pyparsing <!nocheck> <!nodoc>,
+# relevant for testing, but for some reasons at least some of those are
+# required to build original-identical documentation, and I didn't take the
+# time to find out which (and some assorted)
+    python3-nose <!nocheck> <!nodoc>,
+    python3-networkx <!nocheck> <!nodoc>,
+    python3-html5lib <!nocheck> <!nodoc>,
+    python3-sparqlwrapper (>= 1.7.6~) <!nocheck> <!nodoc>,
+    2to3 <!nocheck> <!nodoc>,
+# relevant to testing, but have no bearing on documentation
+    python3-bsddb3 <!nocheck>,
+    python3-rdflib-jsonld <!nocheck>
+Standards-Version: 4.4.1
+Vcs-Browser: https://salsa.debian.org/python-team/packages/rdflib
+Vcs-Git: https://salsa.debian.org/python-team/packages/rdflib.git
+Homepage: https://github.com/RDFLib/rdflib
+
+Package: python3-rdflib
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python3:Depends}
+Provides: ${python3:Provides}
+# workaround for https://bugs.debian.org/841314
+Recommends: python3-sparqlwrapper (>= 1.7.6~), python3-html5lib
+#Recommends: ${python3:Recommends}
+Suggests: python-rdflib-doc
+Description: Python 3 library containing an RDF triple store and RDF parsers/serializers
+ RDFLib is a Python library for working with the RDF W3C standard. The
+ library contains RDF parsers/serializers and both in-memory and
+ persistent Graph backend.
+ .
+ This package contains the Python 3 version of RDFLib.
+
+Package: python-rdflib-doc
+Architecture: all
+Section: doc
+Depends: ${sphinxdoc:Depends}, ${misc:Depends}
+Build-Profiles: <!nodoc>
+Built-Using: ${sphinxdoc:Built-Using}
+Description: Python library containing an RDF triple store [...] (documentation)
+ RDFLib is a Python library for working with the RDF W3C standard. The
+ library contains RDF parsers/serializers and both in-memory and
+ persistent Graph backend.
+ .
+ This is the common documentation package.
+
+Package: python-rdflib-tools
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3, python3-rdflib (>= 4.0.1-1), python3-pkg-resources
+Replaces: python-rdflib (<< 4.0.1-1)
+Breaks: python-rdflib (<< 4.0.1-1)
+Description: Python tools for converting to and from RDF
+ RDFLib is a Python library for working with the RDF W3C standard. The
+ library contains RDF parsers/serializers and both in-memory and
+ persistent Graph backend.
+ .
+ This package contains some executable tools.

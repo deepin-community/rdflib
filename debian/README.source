@@ -1,0 +1,29 @@
+Package editing
+===============
+
+The preferred way of modifying this package is through git (see Vcs-git field,
+use debcheckout) using git-buildpackage (as configured in debian/gbp.conf).
+
+New upstream releases are merged into the upstream branch first, tagged there,
+and then those tags are merged into the debian branch. When importing commits
+from upstream, please take care not to take over upstream's tags (they don't
+conflict with gbp's configuration, but they clutter). If you want to have
+upstream as a remote in your checkout, please add a
+
+	tagOpt = --no-tags
+
+line to the remote section in your git config.
+
+
+Open issues
+===========
+
+Apart from issues tracked in the Debian issue tracker, the debian/TODO file
+lists some open items or decisions in the package's development.
+
+Assorted
+========
+
+The -doc package installs documentation in /usr/shared/doc/python-rdflib-doc/
+and not ../python-rdflib/ (as recommended by policy since 3.9.7 in 12.3)
+because there is no clear main package.

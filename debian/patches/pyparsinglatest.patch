@@ -1,0 +1,18 @@
+Description: Don't stick to pyparsing<=1.5.7 which is required for Python 2.5
+ Apparently, judging from upstream commit b6eb1b15a03a2228b141e7eccb4f0605125921ca,
+ that precise old version is only needed for python 2.5, but we're already 
+ beyond this in Debian.
+Author: Olivier Berger <obergix@debian.org>
+
+---
+--- rdflib-4.0.1.orig/setup.py
++++ rdflib-4.0.1/setup.py
+@@ -52,7 +52,7 @@ else:
+         kwargs['test_suite'] = "nose.collector"
+         kwargs['install_requires'] = [
+             'isodate',
+-            'pyparsing<=1.5.7', 'SPARQLWrapper']
++            'pyparsing', 'SPARQLWrapper']
+ 
+         if sys.version_info[1]<7:
+             kwargs['install_requires'].append('ordereddict')
