@@ -11,17 +11,24 @@ i.e. in your setup.py::
 
     entry_points = {
         'rdf.plugins.sparqleval': [
-            'myfunc =     mypackage:MyFunction',
+            'myfunc = mypackage:MyFunction',
             ],
     }
 """
 
+
+from pathlib import Path
+
 import rdflib
-
+from rdflib.namespace import FOAF, RDF, RDFS
 from rdflib.plugins.sparql.evaluate import evalBGP
-from rdflib.namespace import FOAF
 
-inferredSubClass = rdflib.RDFS.subClassOf * "*"  # any number of rdfs.subClassOf
+EXAMPLES_DIR = Path(__file__).parent
+
+
+inferred_sub_class = (
+    RDFS.subClassOf * "*"  # type: ignore[operator]
+)  # any number of rdfs.subClassOf
 
 
 def customEval(ctx, part):
@@ -30,14 +37,13 @@ def customEval(ctx, part):
     """
 
     if part.name == "BGP":
-
         # rewrite triples
         triples = []
         for t in part.triples:
-            if t[1] == rdflib.RDF.type:
+            if t[1] == RDF.type:
                 bnode = rdflib.BNode()
                 triples.append((t[0], t[1], bnode))
-                triples.append((bnode, inferredSubClass, t[2]))
+                triples.append((bnode, inferred_sub_class, t[2]))
             else:
                 triples.append(t)
 
@@ -48,16 +54,24 @@ def customEval(ctx, part):
 
 
 if __name__ == "__main__":
-
     # add function directly, normally we would use setuptools and entry_points
     rdflib.plugins.sparql.CUSTOM_EVALS["exampleEval"] = customEval
 
     g = rdflib.Graph()
-    g.load("foaf.n3")
+    g.parse(f"{EXAMPLES_DIR / 'foaf.n3'}")
 
     # Add the subClassStmt so that we can query for it!
-    g.add((FOAF.Person, rdflib.RDFS.subClassOf, FOAF.Agent))
+    g.add((FOAF.Person, RDFS.subClassOf, FOAF.Agent))
 
     # Find all FOAF Agents
-    for x in g.query("PREFIX foaf: <%s> SELECT * WHERE { ?s a foaf:Agent . }" % FOAF):
+    for x in g.query(
+        f"""
+        PREFIX foaf: <{FOAF}>
+
+        SELECT *
+        WHERE {{
+            ?s a foaf:Agent .
+        }}
+        """
+    ):
         print(x)

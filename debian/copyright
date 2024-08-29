@@ -9,7 +9,7 @@ License: BSD-3-clause
  Copyright (c) 2002-2012, RDFLib Team
  See CONTRIBUTORS and http://github.com/RDFLib/rdflib
  All rights reserved.
- . 
+ .
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are
  met:
@@ -38,36 +38,6 @@ License: BSD-3-clause
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-Files: rdflib/plugins/parsers/pyRdfa/*
-Copyright: W3C
-License: W3C
-
-Files: rdflib/plugins/parsers/pyRdfa/extras/httpheader.py
-Copyright: (c) 2005 Deron E. Meranda <http://deron.meranda.us/>
-License: LGPL-2.1+
- This library is free software; you can redistribute it and/or modify
- it under the terms of the GNU Lesser General Public License as
- published by the Free Software Foundation; either version 2.1 of the
- License, or (at your option) any later version.
- .
- This library is distributed in the hope that it will be useful, but
- WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- Lesser General Public License for more details.
- .
- You should have received a copy of the GNU Lesser General Public
- License along with this library; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
- 02110-1301 USA
- .
- On Debian systems, the full text of the GNU Lesser General Public
- License version 2.1 can be found in the file
- `/usr/share/common-licenses/LGPL-2.1'.
-
-Files: rdflib/plugins/parsers/pyMicrodata/*
-Copyright: W3C
-License: W3C
-
 Files: rdflib/plugins/parsers/ntriples.py
 Copyright: 2004, Sean B. Palmer, inamidst.com
 License: W3C
@@ -76,25 +46,17 @@ Comment: The actual license statement ist 'GPL-2 or W3C or BSD or MIT'; GPL-2
  of the MIT license?) and thus left out of the machine readable part. The W3C
  license is assumed to be the one used in other files in the same project.
 
-Files: rdflib/plugins/parsers/structureddata.py
-Copyright: W3C
-License: W3C
-
 Files: rdflib/plugins/parsers/notation3.py
 Copyright: 2000-2007, World Wide Web Consortium.
-	   2001, MIT.
-	   2001, Zolera Systems Inc.
-	   2007, Sean B. Palmer. 
-	   2010, Gunnar A. Grimnes
-License: W3C
-
-Files: rdflib/plugins/parsers/hturtle.py
-Copyright: W3C
+           2001, MIT.
+           2001, Zolera Systems Inc.
+           2007, Sean B. Palmer.
+           2010, Gunnar A. Grimnes
 License: W3C
 
 Files: docs/_themes/armstrong/*
 Copyright: (c) 2011 Bay Citizen & Texas Tribune
-	   (c) 2010 Charles Leifer, Eric Holscher, Bobby Grace
+           (c) 2010 Charles Leifer, Eric Holscher, Bobby Grace
 License: Expat
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -147,7 +109,7 @@ Comment: The wording (or variant) of the BSD license in question was traced
  back to the original source of the files and the license statement there at
  https://github.com/sphinx-doc/sphinx/blob/master/LICENSE .
 
-Files: test/w3c/turtle/*
+Files: test/data/suites/w3c/turtle/*
 Copyright: W3C
 License: W3C-Test-Suite or W3C-3-clause-BSD
 Comment: The wording in test/w3c/turtle/LICENSE states "under both [this] and
@@ -194,7 +156,7 @@ License: W3C-Test-Suite
  Copyright FAQ) are satisfied, the right to create modifications or derivatives
  is sometimes granted by the W3C to individuals complying with those
  requirements.
- . 
+ .
  If a Test Suite distinguishes the test harness (or, framework for navigation)
  and the actual tests, permission is given to remove or alter the harness or
  navigation if the Test Suite in question allows to do so. The tests themselves
@@ -249,7 +211,7 @@ License: W3C-3-clause-BSD
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-Files: test/w3c/trig/*
+Files: test/data/suites/w3c/trig/*
 Copyright: W3C
 License: W3C-Test-Suite and W3C-3-clause-BSD
 

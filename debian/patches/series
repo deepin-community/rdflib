@@ -1,2 +1,5 @@
+privacy
+silence_SyntaxWarnings.patch
 disabledoctest.patch
-# pyparsinglatest.patch
+intersphinx
+sphinx-autodoc-defaults.patch

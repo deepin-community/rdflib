@@ -1,0 +1,89 @@
+Author: Michael R. Crusoe <crusoe@debian.org>
+Forwarded: not-needed
+Description: remove remote images from documentation
+To preserve user privacy
+
+--- rdflib.orig/README.md
++++ rdflib/README.md
+@@ -2,19 +2,19 @@
+ 
+ RDFLib
+ ======
+-[![Build Status](https://github.com/RDFLib/rdflib/actions/workflows/validate.yaml/badge.svg?branch=main)](https://github.com/RDFLib/rdflib/actions?query=branch%3Amain)
+-[![Documentation Status](https://readthedocs.org/projects/rdflib/badge/?version=latest)](https://rdflib.readthedocs.io/en/latest/?badge=latest)
+-[![Coveralls branch](https://img.shields.io/coveralls/RDFLib/rdflib/main.svg)](https://coveralls.io/r/RDFLib/rdflib?branch=main)
++[Build Status](https://github.com/RDFLib/rdflib/actions?query=branch%3Amain)
++[Documentation Status](https://rdflib.readthedocs.io/en/latest/?badge=latest)
++[Coveralls branch](https://coveralls.io/r/RDFLib/rdflib?branch=main)
+ 
+-[![GitHub stars](https://img.shields.io/github/stars/RDFLib/rdflib.svg)](https://github.com/RDFLib/rdflib/stargazers)
+-[![Downloads](https://pepy.tech/badge/rdflib/week)](https://pepy.tech/project/rdflib)
+-[![PyPI](https://img.shields.io/pypi/v/rdflib.svg)](https://pypi.python.org/pypi/rdflib)
+-[![PyPI](https://img.shields.io/pypi/pyversions/rdflib.svg)](https://pypi.python.org/pypi/rdflib)
+-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6845245.svg)](https://doi.org/10.5281/zenodo.6845245)
++[GitHub stars](https://github.com/RDFLib/rdflib/stargazers)
++[Downloads](https://pepy.tech/project/rdflib)
++[PyPI](https://pypi.python.org/pypi/rdflib)
++[PyPI](https://pypi.python.org/pypi/rdflib)
++[DOI](https://doi.org/10.5281/zenodo.6845245)
+ 
+-[![Contribute with Gitpod](https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/RDFLib/rdflib)
+-[![Gitter](https://badges.gitter.im/RDFLib/rdflib.svg)](https://gitter.im/RDFLib/rdflib?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+-[![Matrix](https://img.shields.io/matrix/rdflib:matrix.org?label=matrix.org%20chat)](https://matrix.to/#/#RDFLib_rdflib:gitter.im)
++[Contribute with Gitpod](https://gitpod.io/#https://github.com/RDFLib/rdflib)
++[Gitter](https://gitter.im/RDFLib/rdflib?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
++[Matrix](https://matrix.to/#/#RDFLib_rdflib:gitter.im)
+ 
+ RDFLib is a pure Python package for working with [RDF](http://www.w3.org/RDF/). RDFLib contains most things you need to work with RDF, including:
+ 
+--- rdflib.orig/docs/CONTRIBUTING.md
++++ rdflib/docs/CONTRIBUTING.md
+@@ -9,37 +9,37 @@
+ Some ways in which you can contribute to RDFLib are:
+ 
+ - Address open issues:
+-  [![GitHub issues](https://img.shields.io/github/issues/RDFLib/rdflib)](https://github.com/RDFLib/rdflib/issues)
++  [GitHub issues](https://github.com/RDFLib/rdflib/issues)
+ - Fix
+   [expected failure](https://docs.pytest.org/en/latest/how-to/skipping.html#xfail-mark-test-functions-as-expected-to-fail)
+   tests.
+ - Add additional
+   [expected failure](https://docs.pytest.org/en/latest/how-to/skipping.html#xfail-mark-test-functions-as-expected-to-fail)
+   tests for open issues:
+-  [![GitHub issues](https://img.shields.io/github/issues/RDFLib/rdflib)](https://github.com/RDFLib/rdflib/issues)
++  [GitHub issues](https://github.com/RDFLib/rdflib/issues)
+ - Add tests for untested code:
+-  [![Coveralls branch](https://img.shields.io/coveralls/RDFLib/rdflib/main.svg)](https://coveralls.io/r/RDFLib/rdflib?branch=main)
++  [Coveralls branch](https://coveralls.io/r/RDFLib/rdflib?branch=main)
+ - Review pull requests marked with the
+-  [![review wanted](https://img.shields.io/badge/-review%20wanted-28ead2)](https://github.com/RDFLib/rdflib/labels/review%20wanted)
++  [review wanted](https://github.com/RDFLib/rdflib/labels/review%20wanted)
+   label.
+ - Answer questions on Stack Overflow:
+-  [![Stack Exchange questions](https://img.shields.io/stackexchange/stackoverflow/t/rdflib)](https://stackoverflow.com/questions/tagged/rdflib)
++  [Stack Exchange questions](https://stackoverflow.com/questions/tagged/rdflib)
+ - Convert
+   [`unittest`](https://docs.python.org/3/library/unittest.html)
+   based tests to
+   [`pytest`](https://docs.pytest.org/en/latest/)
+   based tests:
+-  [![GitHub search query](https://img.shields.io/badge/GitHub-search-green)](https://github.com/search?q=unittest+repo%3ARDFLib%2Frdflib+extension%3Apy+path%3Atest%2F&type=Code)
++  [GitHub search query](https://github.com/search?q=unittest+repo%3ARDFLib%2Frdflib+extension%3Apy+path%3Atest%2F&type=Code)
+ - Add, correct or improve docstrings:
+-  [![rtd latest](https://img.shields.io/badge/docs-latest-informational)](https://rdflib.readthedocs.io/en/latest/)
++  [rtd latest](https://rdflib.readthedocs.io/en/latest/)
+ - Update the RDFLib Wikipedia entry:
+-  [![Wikipedia: RDFLib](https://img.shields.io/badge/Wikipedia-RDFLib-informational)](https://en.wikipedia.org/wiki/RDFLib)
++  [Wikipedia: RDFLib](https://en.wikipedia.org/wiki/RDFLib)
+ - Update the RDFLib Wikidata entry:
+-  [![Wikidata: Q7276224](https://img.shields.io/badge/Wikidata-Q7276224-informational)](https://www.wikidata.org/wiki/Q7276224)
++  [Wikidata: Q7276224](https://www.wikidata.org/wiki/Q7276224)
+ - Participate on Gitter/Matrix chat:
+-  [![Gitter](https://badges.gitter.im/RDFLib/rdflib.svg)](https://gitter.im/RDFLib/rdflib?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Matrix](https://img.shields.io/matrix/rdflib:matrix.org?label=matrix.org%20chat)](https://matrix.to/#/#RDFLib_rdflib:gitter.im)
++  [Gitter](https://gitter.im/RDFLib/rdflib?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [Matrix](https://matrix.to/#/#RDFLib_rdflib:gitter.im)
+ - Participate in GitHub discussions:
+-  [![GitHub Discussions](https://img.shields.io/github/discussions/RDFLib/rdflib)](https://github.com/RDFLib/rdflib/discussions)
++  [GitHub Discussions](https://github.com/RDFLib/rdflib/discussions)
+ - Fix flake8 failures.
+ 
+ ## Pull Requests

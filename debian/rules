@@ -3,52 +3,45 @@
 # export DH_VERBOSE=1
 # export DH_OPTIONS=-v
 # export PYBUILD_VERBOSE=1
-# set verbosity of nose tests if needed, by uncommenting the following
-#TESTS_VERBOSITY=--verbosity=2
 
-# uncomment to deactivate tests to make package generation quicker
-#export PYBUILD_DISABLE_python2=test
+export PYBUILD_TEST_ARGS=-m "not webtest" -k "not (test_suite or test_graph_update or test_create_input_source or test_block_file or test_with_mock or test_query_url_construct_format or TestSPARQLConnector or test_base or test_served or test_guess_format_for_parse or TestGraphHTTP or test_iri_source or test_query_construct_format or TestSPARQLMock or TestSPARQLStoreFakeDBPedia or test_f or test_warning or test_graph_redirect_new_host)"
+
+# test_create_input_source, test_block_file, test_with_mock, test_query_url_construct_format, TestSPARQLConnector, test_base, test_served, test_guess_format_for_parse, TestGraphHTTP, test_iri_source, test_query_construct_format, TestSPARQLMock, TestSPARQLStoreFakeDBPedia, test_graph_redirect_new_host: needs internet
+# test_f: breakage from Pytest 8.x
+# test_warning: a log message is produced, but no warning; bad test? -> https://github.com/RDFLib/rdflib/issues/2748
+
+export PYBUILD_BEFORE_TEST=cp -r {dir}/examples {build_dir}/
+export PYBUILD_AFTER_TEST=rm -Rf {build_dir}/examples
 
 export PYBUILD_NAME=rdflib
 
 # Install (only) those into the -tools package
-export PYBUILD_AFTER_INSTALL_python3=rm -rf 'debian/python-rdflib-tools/usr/bin'; mv '{destdir}/usr/bin' 'debian/python-rdflib-tools/usr/'
+export PYBUILD_AFTER_INSTALL=rm -rf 'debian/python-rdflib-tools/usr/bin'; mv '{destdir}/usr/bin' 'debian/python-rdflib-tools/usr/'
 
 # upstream requires more recent sphinx now, which we have in stock Debian.
 # Dynamically enable nodoc profile if sphinx is too old to simplify backports
-SPHINX_VER = $(shell dpkg --compare-versions `dpkg -l python3-sphinx | awk '/^ii/{print $$3;}'` ge 2.4 && echo new || echo old )
+SPHINX_VER = $(shell dpkg --compare-versions `dpkg -l python3-sphinx | awk '/^ii/{print $$3;}'` ge 5.3 && echo new || echo old )
 ifeq "$(SPHINX_VER)" "old"
     export DEB_BUILD_PROFILES += nodoc
 endif
 
 %:
 ifneq "$(shell dh_listpackages | grep -- -doc)" ""
-	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
+	dh $@ --with sphinxdoc --buildsystem=pybuild
 else
-	dh $@ --with python3 --buildsystem=pybuild
+	dh $@ --buildsystem=pybuild
 endif
 
 override_dh_auto_build:
 ifneq "$(shell dh_listpackages | grep -- -doc)" ""
-	python3 setup.py build_sphinx
+	sphinx-build docs build/sphinx/html
 endif
+	dh_auto_build
 
 override_dh_sphinxdoc:
 ifneq "$(shell dh_listpackages | grep -- -doc)" ""
 	dh_sphinxdoc
 endif
-#override_dh_sphinxdoc:
-#(test -d $(CURDIR)/debian/python-rdflib-doc && dh_sphinxdoc) || /bin/true
-
-# Make sure pybuild doesn't prevent running tests that require network connections (test_conneg) by setting proxy env vars
-# Skips the test_finalnewline as that fails with JSON-LD.
-# Skips the test_roundtrip test (should skip its test_cases(('nt', 'json-ld',
-#   'test/nt/keywords-04.nt'),), but don't know how to state that) as that fails
-#   with JSON-LD.
-override_dh_auto_test:
-	PYBUILD_SYSTEM=custom \
-	PYBUILD_TEST_ARGS="python3 ./run_tests.py ${TESTS_VERBOSITY} --exclude=test_sparql_service --exclude=test_conneg --exclude=test_finalnewline --exclude=test_roundtrip --verbose" \
-	dh_auto_test --buildsystem=pybuild
 
 override_dh_installexamples:
 	dh_installexamples -X.pyc
