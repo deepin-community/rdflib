@@ -10,10 +10,18 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-import sys
+import logging
 import os
 import re
+import sys
+from typing import Any, Dict
+
+import sphinx
+import sphinx.application
+
+import rdflib
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -30,19 +38,31 @@ extensions = [
     "sphinxcontrib.apidoc",
     "sphinx.ext.autodoc",
     #'sphinx.ext.autosummary',
+    "sphinx_autodoc_typehints",
     "sphinx.ext.doctest",
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
     "sphinx.ext.coverage",
     "sphinx.ext.ifconfig",
     "sphinx.ext.viewcode",
+    "myst_parser",
+    "sphinx.ext.autosectionlabel",
 ]
 
+# https://github.com/sphinx-contrib/apidoc/blob/master/README.rst#configuration
 apidoc_module_dir = "../rdflib"
 apidoc_output_dir = "apidocs"
+
+# https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html
 autodoc_default_options = {"special-members": True}
+autodoc_inherit_docstrings = True
+
+# https://github.com/tox-dev/sphinx-autodoc-typehints
+always_document_param_types = True
 
 autosummary_generate = True
+
+autosectionlabel_prefix_document = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -61,8 +81,8 @@ source_encoding = "utf-8"
 master_doc = "index"
 
 # General information about the project.
-project = u"rdflib"
-copyright = u"2009 - 2020, RDFLib Team"
+project = "rdflib"
+copyright = "2009 - 2023, RDFLib Team"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -71,6 +91,8 @@ copyright = u"2009 - 2020, RDFLib Team"
 
 # Find version. We have to do this because we can't import it in Python 3 until
 # its been automatically converted in the setup process.
+# UPDATE: This function is no longer used; once builds are confirmed to succeed, it
+#         can/should be removed. --JCL 2022-12-30
 def find_version(filename):
     _version_re = re.compile(r'__version__ = "(.*)"')
     for line in open(filename):
@@ -80,7 +102,7 @@ def find_version(filename):
 
 
 # The full version, including alpha/beta/rc tags.
-release = find_version("../rdflib/__init__.py")
+release = rdflib.__version__
 # The short X.Y version.
 version = re.sub("[0-9]+\\.[0-9]\\..*", "\1", release)
 
@@ -102,7 +124,7 @@ version = re.sub("[0-9]+\\.[0-9]\\..*", "\1", release)
 exclude_trees = ["_build", "draft"]
 
 # The reST default role (used for this markup: `text`) to use for all documents.
-# default_role = None
+default_role = "py:obj"
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
 add_function_parentheses = True
@@ -149,12 +171,12 @@ html_theme_path = [
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 # html_logo = None
-html_logo = "_static/logo-rdflib.png"
+html_logo = "_static/RDFlib.png"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-html_favicon = "_static/logo-rdflib.ico"
+html_favicon = "_static/RDFlib.ico"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -210,9 +232,9 @@ htmlhelp_basename = "rdflibdoc"
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [
-    ("index", "rdflib.tex", u"rdflib Documentation", u"RDFLib Team", "manual"),
-]
+# latex_documents = [
+#     ("index", "rdflib.tex", "rdflib Documentation", "RDFLib Team", "manual"),
+# ]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -234,9 +256,125 @@ latex_documents = [
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
-    "python": ("https://docs.python.org/3.7", None),
+    "python": ("https://docs.python.org/3.8", None),
 }
 
 html_experimental_html5_writer = True
 
-needs_sphinx = "2.4"
+needs_sphinx = "4.1.2"
+
+suppress_warnings = [
+    # This is here to prevent:
+    #  "WARNING: more than one target found for cross-reference"
+    "ref.python",
+    "autosectionlabel.*",
+]
+
+sphinx_version = tuple(int(part) for part in sphinx.__version__.split("."))
+
+
+nitpicky = True
+
+if sphinx_version < (5,):
+    # Being nitpicky on Sphinx 4.x causes lots of problems.
+    logging.warning(
+        "disabling nitpicky because sphinx is too old: %s", sphinx.__version__
+    )
+    nitpicky = False
+
+nitpick_ignore = [
+    ("py:class", "urllib.response.addinfourl"),
+    ("py:data", "typing.Literal"),
+    ("py:class", "typing.IO[bytes]"),
+    ("py:class", "http.client.HTTPMessage"),
+    ("py:class", "importlib.metadata.EntryPoint"),
+    ("py:class", "xml.dom.minidom.Document"),
+    ("py:class", "xml.dom.minidom.DocumentFragment"),
+    ("py:class", "isodate.duration.Duration"),
+    # sphinx-autodoc-typehints has some issues with TypeVars.
+    # https://github.com/tox-dev/sphinx-autodoc-typehints/issues/39
+    ("py:class", "rdflib.plugin.PluginT"),
+    # sphinx-autodoc-typehints does not like generic parmaeters in inheritance it seems
+    ("py:class", "Identifier"),
+    # These are related to pyparsing.
+    ("py:class", "Diagnostics"),
+    ("py:class", "ParseAction"),
+    ("py:class", "ParseFailAction"),
+    ("py:class", "pyparsing.core.TokenConverter"),
+    ("py:class", "pyparsing.results.ParseResults"),
+    ("py:class", "pyparsing.core.ParserElement"),
+    # These are related to BerkeleyDB
+    ("py:class", "db.DBEnv"),
+]
+
+if sys.version_info < (3, 9):
+    nitpick_ignore.extend(
+        [
+            ("py:class", "_ContextIdentifierType"),
+            ("py:class", "_ContextType"),
+            ("py:class", "_GraphT"),
+            ("py:class", "_NamespaceSetString"),
+            ("py:class", "_ObjectType"),
+            ("py:class", "_PredicateType"),
+            ("py:class", "_QuadSelectorType"),
+            ("py:class", "_SubjectType"),
+            ("py:class", "_TripleOrPathTripleType"),
+            ("py:class", "_TripleOrQuadPathPatternType"),
+            ("py:class", "_TripleOrQuadPatternType"),
+            ("py:class", "_TriplePathPatternType"),
+            ("py:class", "_TriplePathType"),
+            ("py:class", "_TriplePatternType"),
+            ("py:class", "_TripleSelectorType"),
+            ("py:class", "_TripleType"),
+            ("py:class", "_TripleOrTriplePathType"),
+            ("py:class", "TextIO"),
+            ("py:class", "Message"),
+        ]
+    )
+
+
+def autodoc_skip_member_handler(
+    app: sphinx.application.Sphinx,
+    what: str,
+    name: str,
+    obj: Any,
+    skip: bool,
+    options: Dict[str, Any],
+):
+    """
+    This function will be called by Sphinx when it is deciding whether to skip a
+    member of a class or module.
+    """
+    # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#event-autodoc-skip-member
+    if (
+        app.env.docname == "apidocs/rdflib"
+        and what == "module"
+        and type(obj).__name__.endswith("DefinedNamespaceMeta")
+    ):
+        # Don't document namespaces in the `rdflib` module, they will be
+        # documented in the `rdflib.namespace` module instead and Sphinx does
+        # not like when these are documented in two places.
+        #
+        # An example of the WARNINGS that occur without this is:
+        #
+        # "WARNING: duplicate object description of rdflib.namespace._SDO.SDO,
+        # other instance in apidocs/rdflib, use :noindex: for one of them"
+        logging.info(
+            "Skipping %s %s in %s, it will be documented in ",
+            what,
+            name,
+            app.env.docname,
+        )
+        return True
+    return None
+
+
+# https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#skipping-members
+def setup(app: sphinx.application.Sphinx) -> None:
+    """
+    Setup the Sphinx application.
+    """
+
+    # Register a autodoc-skip-member handler so that certain members can be
+    # skipped.
+    app.connect("autodoc-skip-member", autodoc_skip_member_handler)

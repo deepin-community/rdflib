@@ -1,0 +1,19 @@
+From: James Addison <jay@jp-hosting.net>
+Date: Sun, Mar 10 2024 23:59:09 +0000
+Subject: enable Sphinx autodoc preservation of method-argument defaults
+ .
+ This avoids build-time variation such as object memory addresses from
+ inadvertently leaking into the packaged documentation.
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1066016
+---
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -263,6 +263,8 @@
+ 
+ needs_sphinx = "4.1.2"
+ 
++autodoc_preserve_defaults = True  # http://bugs.debian.org/1066016
++
+ suppress_warnings = [
+     # This is here to prevent:
+     #  "WARNING: more than one target found for cross-reference"

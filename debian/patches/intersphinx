@@ -1,0 +1,14 @@
+Author: Michael R. Crusoe <crusoe@debian.org>
+Description: Link to the local copy of the Python 3 docs
+Forwarded: not-needed
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -256,7 +256,7 @@
+ 
+ # Example configuration for intersphinx: refer to the Python standard library.
+ intersphinx_mapping = {
+-    "python": ("https://docs.python.org/3.8", None),
++    "python": ("https://docs.python.org/3", "/usr/share/doc/python3-doc/html/objects.inv"),
+ }
+ 
+ html_experimental_html5_writer = True

@@ -1,2 +1,4 @@
 rdflib.egg-info/
 build/
+docs/apidocs/rdflib.*
+docs/apidocs/modules.rst

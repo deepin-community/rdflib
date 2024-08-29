@@ -1,7 +1,0 @@
-flake8
-html5lib
-isodate
-pyparsing
-requests
-six
-doctest-ignore-unicode
